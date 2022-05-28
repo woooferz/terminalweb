@@ -1,0 +1,171 @@
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap");
+body {
+  font-family: "JetBrains Mono", "Courier New", Courier, monospace;
+  font-size: 16px;
+  background-color: #373737;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+#output {
+  color: #ffffff;
+}
+
+#output .line {
+  color: inherit;
+}
+
+#terminalInput {
+  font-family: "JetBrains Mono", "Courier New", Courier, monospace;
+  background-color: rgba(0, 0, 0, 0);
+  border: rgba(0, 0, 0, 0);
+  outline: rgba(0, 0, 0, 0);
+  color: #ffffff;
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+  -webkit-box-flex: 2;
+      -ms-flex: 2;
+          flex: 2;
+  margin-left: 9.5px;
+}
+
+#terminalInput.error {
+  color: #ff8888;
+}
+
+.error {
+  color: #ff8888;
+}
+
+#inputArea #prefix {
+  color: #ffffff;
+}
+
+#inputArea {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.colour {
+  display: inline;
+}
+
+.colour.red-stuff {
+  color: #ff5555;
+}
+
+.colour.red-stuff a {
+  color: #ff5555;
+}
+
+.colour.blue-stuff {
+  color: #5555ff;
+}
+
+.colour.blue-stuff a {
+  color: #5555ff;
+}
+
+.colour.yellow-stuff {
+  color: #ffff55;
+}
+
+.colour.yellow-stuff a {
+  color: #ffff55;
+}
+
+.colour.green-stuff {
+  color: #55ff55;
+}
+
+.colour.green-stuff a {
+  color: #55ff55;
+}
+
+.colour.lightblue-stuff {
+  color: #88ffff;
+}
+
+.colour.lightblue-stuff a {
+  color: #88ffff;
+}
+
+.colour.lightgreen-stuff {
+  color: #88ff88;
+}
+
+.colour.lightgreen-stuff a {
+  color: #88ff88;
+}
+
+.colour.term1-stuff {
+  color: #6f6fff;
+}
+
+.colour.term1-stuff a {
+  color: #6f6fff;
+}
+
+.colour.term2-stuff {
+  color: #6f6fff;
+}
+
+.colour.term2-stuff a {
+  color: #6f6fff;
+}
+
+.colour.term3-stuff {
+  color: #6f6fff;
+}
+
+.colour.term3-stuff a {
+  color: #6f6fff;
+}
+
+a {
+  text-decoration: underline;
+}
+
+a.link {
+  color: #5555ff;
+}
+
+a:hover {
+  text-decoration: none;
+  color: #ffff22 !important;
+}
+
+.inline {
+  display: inline;
+}
+
+span.underscore {
+  border-bottom: 1.5px solid white;
+  margin-left: -5px;
+  display: none;
+}
+
+@-webkit-keyframes blink {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: #fff;
+  }
+}
+
+@keyframes blink {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: #fff;
+  }
+}
+/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,163 @@
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap");
+
+$bg: #373737;
+$font: "JetBrains Mono", "Courier New", Courier, monospace;
+$text: #ffffff;
+$nothing: rgba(0, 0, 0, 0);
+$fontsize: 16px;
+// $red: #ee4646;
+// $blue: #0362fc;
+// $lightblue: #03bafc;
+// $yellow: #ffff68;
+// $green: #5dec5d;
+// $lightgreen: #88e4b6;
+// $term1: #b18fcf;
+// $term2: #3a606e;
+// $term3: #b4ceb3;
+
+// ANSI COLOURS
+$black: #555555;
+$red: #ff5555;
+$green: #55ff55;
+$yellow: #ffff55;
+$blue: #5555ff;
+$magenta: #ff55ff;
+$cyan: #55ffff;
+$lightblue: lighten($cyan, 10);
+$lightgreen: lighten($green, 10);
+
+$term1: lighten($blue, 5);
+$term2: $term1;
+$term3: $term1;
+
+// END OF ANSI COLOURS
+
+$input: $text;
+
+body {
+  font-family: $font;
+  font-size: $fontsize;
+  background-color: $bg;
+  user-select: none;
+}
+#output {
+  color: $text;
+}
+#output .line {
+  color: inherit;
+}
+
+#terminalInput {
+  font-family: $font;
+  background-color: $nothing;
+  border: $nothing;
+  outline: $nothing;
+  color: $input;
+  font-size: $fontsize;
+  margin: 0;
+  padding: 0;
+  flex: 2;
+  margin-left: 9.5px;
+  // caret-color: $nothing;
+  &.error {
+    color: lighten($red, 10);
+  }
+}
+
+.error {
+  color: lighten($red, 10);
+}
+#inputArea #prefix {
+  color: $text;
+}
+
+#inputArea {
+  display: flex;
+}
+.colour {
+  display: inline;
+  &.red-stuff {
+    color: $red;
+    a {
+      color: $red;
+    }
+  }
+  &.blue-stuff {
+    color: $blue;
+    a {
+      color: $blue;
+    }
+  }
+  &.yellow-stuff {
+    color: $yellow;
+    a {
+      color: $yellow;
+    }
+  }
+  &.green-stuff {
+    color: $green;
+    a {
+      color: $green;
+    }
+  }
+  &.lightblue-stuff {
+    color: $lightblue;
+    a {
+      color: $lightblue;
+    }
+  }
+  &.lightgreen-stuff {
+    color: $lightgreen;
+    a {
+      color: $lightgreen;
+    }
+  }
+  &.term1-stuff {
+    color: $term1;
+    a {
+      color: $term1;
+    }
+  }
+  &.term2-stuff {
+    color: $term2;
+    a {
+      color: $term2;
+    }
+  }
+  &.term3-stuff {
+    color: $term3;
+    a {
+      color: $term3;
+    }
+  }
+}
+a {
+  text-decoration: underline;
+  &.link {
+    color: $blue;
+  }
+  &:hover {
+    text-decoration: none;
+    color: darken($yellow, 10) !important;
+  }
+}
+
+.inline {
+  display: inline;
+}
+
+span.underscore {
+  border-bottom: 1.5px solid white;
+  margin-left: -5px;
+  display: none;
+}
+
+@keyframes blink {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: #fff;
+  }
+}
