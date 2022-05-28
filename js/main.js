@@ -2,7 +2,7 @@
 
 /* VARIABLES */
 
-const version = "v0.3";
+const version = "v0.3.1";
 
 const prefixText = `[t1]you[/t1][t2]@[/t2][t3]woofterm-${version} $ [/t3]`;
 
@@ -24,6 +24,7 @@ let availableCommands = [
   "changelog",
   "history",
   "open",
+  "repo",
   "",
 ]; // Sets the available commands for the red stuff to work.
 
@@ -57,13 +58,13 @@ function colorize(text) {
     .replaceAll("[/clg]", "</div>"); // LIGHT BLUE
   colorizedText = colorizedText
     .replaceAll("[t1]", '<div class="colour term1-stuff">')
-    .replaceAll("[/t1]", "</div>"); // LIGHT BLUE
+    .replaceAll("[/t1]", "</div>");
   colorizedText = colorizedText
     .replaceAll("[t2]", '<div class="colour term2-stuff">')
-    .replaceAll("[/t2]", "</div>"); // LIGHT BLUE
+    .replaceAll("[/t2]", "</div>");
   colorizedText = colorizedText
     .replaceAll("[t3]", '<div class="colour term3-stuff">')
-    .replaceAll("[/t3]", "</div>"); // LIGHT BLUE
+    .replaceAll("[/t3]", "</div>");
 
   if (colorizedText.match(/\[click-\w+\]/g)) {
     // console.log("clicky");
@@ -95,20 +96,21 @@ function colorize(text) {
     //     .replace("[click-", "")
     //     .replace("]", "")
     // );
-    const linkUrl = colorizedText
+    colorizedText
       .match(
         /\[link-https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)\]/g
-      )[0]
-      .replace("[link-", "")
-      .replace("]", "");
-    // console.log(cmdName);
-    colorizedText = colorizedText.replaceAll(
-      `[link-${linkUrl}]`,
-      `<a href="${linkUrl}" target=\"_blank">`
-    );
+      )
+      .forEach((element) => {
+        const linkUrl = element.replace("[link-", "").replace("]", "");
+        // console.log(cmdName);
+        colorizedText = colorizedText.replaceAll(
+          `[link-${linkUrl}]`,
+          `<a href="${linkUrl}" target=\"_blank">`
+        );
+      });
   }
-  colorizedText = colorizedText.replace("[/link]", "</a>");
-  colorizedText = colorizedText.replace("[/click]", "</div>");
+  colorizedText = colorizedText.replaceAll("[/link]", "</a>");
+  colorizedText = colorizedText.replaceAll("[/click]", "</div>");
   if (colorizedText.match(/\[\d+s\/\]/g)) {
     colorizedText.match(/\[\d+s\/\]/g).forEach((element) => {
       let numOfSpaces = element.replace(/(\[|s|\/|\])/g, "");
@@ -231,8 +233,17 @@ function commandHandler(command, cmdline = true) {
     case "waffle":
       addLine("Yessir!");
       break;
+    case "repo":
+      addLine(
+        "[n/][clb]GitHub Repo: [link-https://github.com/woooferz/terminalweb]Terminal Web[/link][n/][n/]"
+      );
+      break;
     case "changelog":
       addLine("Changelog:");
+      addLine("[2s/]v0.3.1:");
+      addLine("[4s/]Added the repo command");
+      addLine("[4s/]Added repo to the wfetch command");
+
       addLine("[2s/]v0.3:");
       addLine("[4s/]Updated colours");
       addLine("[4s/]Added support for advanced commands");
@@ -257,6 +268,7 @@ function commandHandler(command, cmdline = true) {
       helpCommand("changelog", "Changelog for Woof Terminal");
       helpCommand("history", "Shows command history of current session");
       helpCommand("open", "Opens a new tab with passed in url");
+      helpCommand("repo", "Shows the github repos link");
 
       break;
     case "history":
@@ -304,7 +316,7 @@ function commandHandler(command, cmdline = true) {
     [n/]      
     [cy]| |_|_|_|_|_|_|_| |[/cy][s/]     [clb]Hardware:[/clb] [cg]Browser[/cg]
     [n/]      
-    [cy]| |_|_|_|_|_|_|_| |[/cy][s/]
+    [cy]| |_|_|_|_|_|_|_| |[/cy][s/]     [clb]Repo:[/clb] [cg][link-https://github.com/woooferz/terminalweb]Github[/link][/cg]
     [n/]     
     [cy][s/]\\ -|_|_|_|_|_|- /[/cy][2s/]
     [n/] 
