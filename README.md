@@ -1,6 +1,6 @@
 # Terminal Themed Website
 
-Title says it all!
+It replicates the terminal feel, inside of a website. You could use this for a portfolio, or just for fun! It has various commands such as `wfetch`, `clear`. You can add more as this whole project is open source and under the MIT Licence.
 
 ## Customize
 
