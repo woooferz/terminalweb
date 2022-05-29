@@ -5,7 +5,7 @@ Title says it all!
 ## Customize
 
 To change some of the styling you can change the variables in /css/style.scss and recompile it into css.
-To change the commands, and other functionality go to /js/main.js, Currently a bit of documentation has been created, simple [click this link](https://github.com/woooferz/terminalweb/wiki).
+To change the commands, and other functionality go to /js/main.js, Currently a bit of documentation has been created, simply [click this link](https://github.com/woooferz/terminalweb/wiki).
 
 ## Screenshots
 
