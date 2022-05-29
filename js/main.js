@@ -386,7 +386,23 @@ input.onkeydown = function (e) {
 
     setInput(backIndex <= 0 ? "" : commands[commands.length - backIndex]);
     refocus();
+  } else if (e.key == "Tab") {
+    if (input.value != "") {
+      for (var i = 0; i < availableCommands.length; i++) {
+        if (
+          availableCommands[i].startsWith(input.value) &&
+          availableCommands[i] != input.value
+        ) {
+          // console.log(availableCommands[i]);
+          setInput(availableCommands[i]);
+          break;
+        }
+      }
+    }
+    e.preventDefault();
   }
+  // console.log(e.key);
+  // e.preventDefault();
   //   addLine(backIndex);
 };
 
