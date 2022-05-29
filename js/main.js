@@ -1,16 +1,23 @@
 // Customize right-click menu
 
 /* VARIABLES */
+const TEXT_OFFSET = 9.59;
+const CHAR_SIZE = 9.1203;
 
-const version = "v0.3.1";
+const version = "v0.4";
 
+// 20 chars
+// 191.5px
+// 20 chars * 9.1203 = 182.406
+// 182.406 + 10.094
 const prefixText = `[t1]you[/t1][t2]@[/t2][t3]woofterm-${version} $ [/t3]`;
-
+const lengthOfPrefix = 20;
 /* END OF VARIABLES */
 
 const output = document.getElementById("output");
 const input = document.getElementById("terminalInput");
 const prefix = document.getElementById("prefix");
+const autocomplete = document.querySelector("div#autocomplete");
 
 let availableCommands = [
   "waffle",
@@ -195,6 +202,26 @@ input.addEventListener("input", (event) => {
     } catch {}
   } else {
     event.target.classList.add("error");
+  }
+  let clear = true;
+
+  if (clear) {
+    autocomplete.innerHTML = "";
+  }
+
+  if (input.value != "") {
+    for (var i = 0; i < availableCommands.length; i++) {
+      if (
+        availableCommands[i].startsWith(input.value) &&
+        availableCommands[i] != input.value
+      ) {
+        // console.log(availableCommands[i]);
+        autocomplete.innerHTML = availableCommands[i];
+        break;
+      }
+    }
+  } else {
+    autocomplete.innerHTML = "";
   }
 });
 
@@ -390,3 +417,6 @@ document.addEventListener("DOMSubtreeModified", (e) => {
 });
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+marginPrefix = lengthOfPrefix * CHAR_SIZE + TEXT_OFFSET;
+autocomplete.style.cssText += "margin-left:" + marginPrefix + "px;";
