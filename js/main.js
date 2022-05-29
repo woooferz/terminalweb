@@ -2,7 +2,7 @@
 
 /* VARIABLES */
 const TEXT_OFFSET = 9.59;
-const CHAR_SIZE = 9.1203;
+const CHAR_SIZE = 9.1503;
 
 const version = "v0.4";
 
@@ -11,13 +11,13 @@ const version = "v0.4";
 // 20 chars * 9.1203 = 182.406
 // 182.406 + 10.094
 const prefixText = `[t1]you[/t1][t2]@[/t2][t3]woofterm-${version} $ [/t3]`;
-const lengthOfPrefix = 20;
 /* END OF VARIABLES */
 
 const output = document.getElementById("output");
 const input = document.getElementById("terminalInput");
 const prefix = document.getElementById("prefix");
 const autocomplete = document.querySelector("div#autocomplete");
+let lengthOfPrefix = 0;
 
 let availableCommands = [
   "waffle",
@@ -185,6 +185,10 @@ function openTab(url) {
 }
 function helpCommand(cmd, desc) {
   addLine(`[clb][click-${cmd}]${cmd}[/click][/clb][n/][3s/]${desc}`);
+}
+function stextLength(text) {
+  cleanText = colorize(text).replace(/<\/?[^>]+(>|$)/g, "");
+  return cleanText.length;
 }
 input.addEventListener("input", (event) => {
   event.target.setAttribute(
@@ -433,6 +437,6 @@ document.addEventListener("DOMSubtreeModified", (e) => {
 });
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-
+lengthOfPrefix = stextLength(prefixText);
 marginPrefix = lengthOfPrefix * CHAR_SIZE + TEXT_OFFSET;
 autocomplete.style.cssText += "margin-left:" + marginPrefix + "px;";
