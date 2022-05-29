@@ -40,6 +40,17 @@ body {
   color: #ff8888;
 }
 
+.autocomplete {
+  font-family: "JetBrains Mono", "Courier New", Courier, monospace-1;
+  opacity: 0.3;
+  background-color: rgba(0, 0, 0, 0);
+  color: #ffffff;
+  font-size: 16px;
+  position: absolute;
+  margin-top: -21px;
+  z-index: -1;
+}
+
 #inputArea #prefix {
   color: #ffffff;
 }

@@ -1,16 +1,23 @@
 // Customize right-click menu
 
 /* VARIABLES */
+const TEXT_OFFSET = 9.59;
+const CHAR_SIZE = 9.1503;
 
-const version = "v0.3.1";
+const version = "v0.4";
 
+// 20 chars
+// 191.5px
+// 20 chars * 9.1203 = 182.406
+// 182.406 + 10.094
 const prefixText = `[t1]you[/t1][t2]@[/t2][t3]woofterm-${version} $ [/t3]`;
-
 /* END OF VARIABLES */
 
 const output = document.getElementById("output");
 const input = document.getElementById("terminalInput");
 const prefix = document.getElementById("prefix");
+const autocomplete = document.querySelector("div#autocomplete");
+let lengthOfPrefix = 0;
 
 let availableCommands = [
   "waffle",
@@ -179,6 +186,10 @@ function openTab(url) {
 function helpCommand(cmd, desc) {
   addLine(`[clb][click-${cmd}]${cmd}[/click][/clb][n/][3s/]${desc}`);
 }
+function stextLength(text) {
+  cleanText = colorize(text).replace(/<\/?[^>]+(>|$)/g, "");
+  return cleanText.length;
+}
 input.addEventListener("input", (event) => {
   event.target.setAttribute(
     "size",
@@ -195,6 +206,26 @@ input.addEventListener("input", (event) => {
     } catch {}
   } else {
     event.target.classList.add("error");
+  }
+  let clear = true;
+
+  if (clear) {
+    autocomplete.innerHTML = "";
+  }
+
+  if (input.value != "") {
+    for (var i = 0; i < availableCommands.length; i++) {
+      if (
+        availableCommands[i].startsWith(input.value) &&
+        availableCommands[i] != input.value
+      ) {
+        // console.log(availableCommands[i]);
+        autocomplete.innerHTML = availableCommands[i];
+        break;
+      }
+    }
+  } else {
+    autocomplete.innerHTML = "";
   }
 });
 
@@ -240,6 +271,10 @@ function commandHandler(command, cmdline = true) {
       break;
     case "changelog":
       addLine("Changelog:");
+      addLine("[2s/]v0.4:");
+      addLine("[4s/]Added autocompletion");
+      addLine("[n/]");
+
       addLine("[2s/]v0.3.1:");
       addLine("[4s/]Added the repo command");
       addLine("[4s/]Added repo to the wfetch command");
@@ -247,7 +282,7 @@ function commandHandler(command, cmdline = true) {
       addLine("[2s/]v0.3:");
       addLine("[4s/]Updated colours");
       addLine("[4s/]Added support for advanced commands");
-
+      addLine("[n/]");
       addLine("[2s/]v0.2.5:");
       addLine("[4s/]Made it simpler to use links");
       addLine("[2s/]v0.2.4:");
@@ -359,7 +394,23 @@ input.onkeydown = function (e) {
 
     setInput(backIndex <= 0 ? "" : commands[commands.length - backIndex]);
     refocus();
+  } else if (e.key == "Tab") {
+    if (input.value != "") {
+      for (var i = 0; i < availableCommands.length; i++) {
+        if (
+          availableCommands[i].startsWith(input.value) &&
+          availableCommands[i] != input.value
+        ) {
+          // console.log(availableCommands[i]);
+          setInput(availableCommands[i]);
+          break;
+        }
+      }
+    }
+    e.preventDefault();
   }
+  // console.log(e.key);
+  // e.preventDefault();
   //   addLine(backIndex);
 };
 
@@ -390,3 +441,6 @@ document.addEventListener("DOMSubtreeModified", (e) => {
 });
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+lengthOfPrefix = stextLength(prefixText);
+marginPrefix = lengthOfPrefix * CHAR_SIZE + TEXT_OFFSET;
+autocomplete.style.cssText += "margin-left:" + marginPrefix + "px;";
