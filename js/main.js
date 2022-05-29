@@ -271,6 +271,10 @@ function commandHandler(command, cmdline = true) {
       break;
     case "changelog":
       addLine("Changelog:");
+      addLine("[2s/]v0.4:");
+      addLine("[4s/]Added autocompletion");
+      addLine("[n/]");
+
       addLine("[2s/]v0.3.1:");
       addLine("[4s/]Added the repo command");
       addLine("[4s/]Added repo to the wfetch command");
@@ -278,7 +282,7 @@ function commandHandler(command, cmdline = true) {
       addLine("[2s/]v0.3:");
       addLine("[4s/]Updated colours");
       addLine("[4s/]Added support for advanced commands");
-
+      addLine("[n/]");
       addLine("[2s/]v0.2.5:");
       addLine("[4s/]Made it simpler to use links");
       addLine("[2s/]v0.2.4:");
