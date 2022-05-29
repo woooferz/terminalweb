@@ -168,4 +168,13 @@ span.underscore {
     border-color: #fff;
   }
 }
+
+div.click {
+  text-decoration: none;
+}
+
+div.click:hover {
+  text-decoration: underline;
+  color: #5555ff;
+}
 /*# sourceMappingURL=style.css.map */

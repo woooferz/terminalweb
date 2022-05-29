@@ -161,3 +161,11 @@ span.underscore {
     border-color: #fff;
   }
 }
+
+div.click {
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+    color: $blue;
+  }
+}
