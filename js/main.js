@@ -1,10 +1,10 @@
 // Customize right-click menu
 
 /* VARIABLES */
-const TEXT_OFFSET = 9.59;
-const CHAR_SIZE = 9.1503;
+const TEXT_OFFSET = 0;
+const CHAR_SIZE = 9.594;
 
-const version = "v0.4";
+const version = "v0.4.1";
 
 // 20 chars
 // 191.5px
@@ -271,6 +271,10 @@ function commandHandler(command, cmdline = true) {
       break;
     case "changelog":
       addLine("Changelog:");
+      addLine("[2s/]v0.4.1:");
+      addLine("[4s/]Fixed autocompletion");
+      addLine("[n/]");
+
       addLine("[2s/]v0.4:");
       addLine("[4s/]Added autocompletion");
       addLine("[n/]");
